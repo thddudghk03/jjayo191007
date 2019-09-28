@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <include
-        layout="@layout/my_toolbar"
+        layout="@layout/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         ></include>
@@ -27,44 +27,41 @@
         app:layout_constraintLeft_toLeftOf="parent"
          />
 
-    <ImageView
-        android:id="@+id/white_bg"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/white_bg"
-        app:layout_constraintVertical_bias="0.20"
-        app:layout_constraintTop_toTopOf="parent"
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/rounded"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.30">
 
-    <TextView
-        android:id="@+id/word"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="70dp"
-        android:textColor="#010101"
-        android:text="座"
-        android:fontFamily="sans-serif"
-        app:layout_constraintVertical_bias="0.26"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.01"
+            android:lineSpacingExtra="-94dp"
+            android:text="排"
+            android:textColor="#010101"
+            android:textSize="100dp" />
 
-    <TextView
-        android:id="@+id/pronunciation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textColor="@color/black"
-        android:text="Zuò"
-        android:fontFamily="sans-serif"
-        app:layout_constraintVertical_bias="0.4"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="-19dp"
+                android:text="pái"
+                android:textColor="#000000"
+                android:textSize="25dp" />
+    </LinearLayout>
 
     <Button
     android:id="@+id/choice_answer1"

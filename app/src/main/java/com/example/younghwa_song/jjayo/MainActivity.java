@@ -10,7 +10,6 @@ import android.widget.Button;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
     int index;
     ArrayList<Button> buttons = new ArrayList<>();
 
