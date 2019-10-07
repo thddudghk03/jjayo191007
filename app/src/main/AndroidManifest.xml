@@ -24,7 +24,8 @@
         <activity android:name=".WordStudyActivity">
         </activity>
         <activity android:name=".WordQuizActivity">
-
+        </activity>
+        <activity android:name=".QuizStartActivity">
         </activity>
     </application>
 

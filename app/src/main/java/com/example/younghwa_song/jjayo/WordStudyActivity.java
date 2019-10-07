@@ -1,5 +1,6 @@
 package com.example.younghwa_song.jjayo;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,7 +23,7 @@ import me.relex.circleindicator.CircleIndicator;
 public class WordStudyActivity extends AppCompatActivity {
 
     FragmentStatePagerAdapter fragmentStatePagerAdapter;
-
+    static  ImageView word;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +52,7 @@ public class WordStudyActivity extends AppCompatActivity {
             }
         });
 
-        final LinearLayout drawLayout = (LinearLayout) findViewById(R.id.draw_layout);
+        LinearLayout drawLayout = (LinearLayout) findViewById(R.id.draw_layout);
         final MyView m = new MyView(this);
         drawLayout.addView(m);
 
@@ -71,11 +73,11 @@ public class WordStudyActivity extends AppCompatActivity {
 
 
         //next 버튼
-        Button next_btn = (Button) findViewById(R.id.next_btn);
+        final Button next_btn = (Button) findViewById(R.id.next_btn);
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), WordQuizActivity.class);
+                Intent intent = new Intent(getApplicationContext(), QuizStartActivity.class);
                 startActivity(intent);
             }
         });
@@ -84,11 +86,49 @@ public class WordStudyActivity extends AppCompatActivity {
         CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
         indicator.setViewPager(vPager);
 
-        ImageView word = (ImageView) findViewById(R.id.word_gif);
+        //gif 설정하는 부분
+        word = (ImageView) findViewById(R.id.word_gif);
+
         GlideDrawableImageViewTarget gifImage = new GlideDrawableImageViewTarget(word);
         Glide.with(this).load(R.drawable.pai).into(gifImage);
 
+        vPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                GlideDrawableImageViewTarget gif = new GlideDrawableImageViewTarget(word);
+                switch (i){
+                    case 0 :
+                        Glide.with(getApplicationContext()).load(R.drawable.pai).into(gif);
+                        next_btn.setVisibility(View.INVISIBLE);
+                        break;
+                    case 1 :
+                        Glide.with(getApplicationContext()).load(R.drawable.zuo).into(gif);
+                        next_btn.setVisibility(View.INVISIBLE);
+                        break;
+                    case 2 :
+                        Glide.with(getApplicationContext()).load(R.drawable.nin).into(gif);
+                        next_btn.setVisibility(View.VISIBLE);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
+
+
     }
+
+
 
     public static class MyPagerAdapter extends FragmentStatePagerAdapter {
 
@@ -105,24 +145,53 @@ public class WordStudyActivity extends AppCompatActivity {
 
         // Returns the fragment to display for that page
         public Fragment getItem(int position) {
+            Bundle bundle = new Bundle(3); // 액티비티와 프래그먼트 간 데이터를 주고 받기 위함
+            WordFragment1 wf1 = new WordFragment1();
+
             switch (position) {
                 case 0:
-                    return new WordFragment1();
+                    bundle.putString("word", "排");
+                    bundle.putString("speak", "pái  ");
+                    bundle.putString("mean", "열");
+                    wf1.setArguments(bundle);
+                    return wf1;
                 case 1:
-                    return new WordFragment2();
+
+                    bundle.putString("word", "座");
+                    bundle.putString("speak", "zuò  ");
+                    bundle.putString("mean", "좌석");
+                    wf1.setArguments(bundle);
+                    return wf1;
                 case 2:
-                    return new WordFragment3();
+                    bundle.putString("word", "您");
+                    bundle.putString("speak", "nín  ");
+                    bundle.putString("mean", "당신");
+                    wf1.setArguments(bundle);
+                    return wf1;
                 default:
                     return null;
             }
         }
 
-        // Returns the page title for the top indicator
+        // Returns the page title for the top indicator 없어도 됨
         @Override
         public CharSequence getPageTitle(int position) {
 
             return position + "";
         }
+    }
+
+
+    //툴바의 뒤로가기
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home: { //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
