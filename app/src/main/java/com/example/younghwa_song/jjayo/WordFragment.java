@@ -9,20 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 import java.util.Locale;
 
-import static android.speech.tts.TextToSpeech.QUEUE_FLUSH;
 
-
-public class WordFragment1 extends Fragment implements TextToSpeech.OnInitListener {
+public class WordFragment extends Fragment implements TextToSpeech.OnInitListener {
     TextView word, speak, meaning;
-    public WordFragment1() {
+    public WordFragment() {
 
     }
     @Override
@@ -36,7 +30,7 @@ public class WordFragment1 extends Fragment implements TextToSpeech.OnInitListen
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.word1, container, false);
+        View view = inflater.inflate(R.layout.word, container, false);
         ImageButton speech = (ImageButton) view.findViewById(R.id.speechButton);
         tts = new TextToSpeech(getActivity(), this);
 

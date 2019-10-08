@@ -10,41 +10,42 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/rounded"
 
         android:gravity="center"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/word"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:gravity="center_vertical"
             android:letterSpacing="0.01"
-            android:lineSpacingExtra="-94dp"
-            android:text="您"
+            android:text="排"
             android:textColor="#010101"
-            android:textSize="100dp" />
+            android:textSize="60dp" />
 
         <LinearLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center">
 
             <TextView
+                android:id="@+id/speak"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
                 android:gravity="center_horizontal"
-                android:letterSpacing="0.01"
-                android:lineSpacingExtra="-19dp"
-                android:text="nín  "
+                android:layout_marginRight="10dp"
+                android:text="pái  "
                 android:textColor="#000000"
                 android:textSize="25dp" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/speechButton"
                 android:layout_width="33dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="2dp"
@@ -52,48 +53,46 @@
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/sound" />
         </LinearLayout>
+
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/roundedtext"
         android:gravity="center">
 
         <TextView
+            android:id="@+id/meaning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:letterSpacing="0.01"
             android:lineSpacingExtra="-24.3dp"
-            android:text="당신, 2인칭 존칭"
+            android:text="열"
             android:textColor="#000000"
             android:textSize="30dp" />
     </LinearLayout>
 
     <!--
     그림판 부분
-
     <LinearLayout
          android:layout_marginTop="50dp"
          android:layout_width="match_parent"
          android:layout_height="200dp"
          android:orientation="horizontal">
-
          <LinearLayout
-
              android:layout_width="0dp"
              android:layout_weight="1"
              android:layout_marginLeft="3dp"
              android:layout_marginRight="1.5dp"
              android:background="@drawable/edge"
              android:layout_height="match_parent">
-
          </LinearLayout>
-
          <LinearLayout
              android:id="@+id/draw_layout"
              android:orientation="vertical"
@@ -103,7 +102,6 @@
              android:layout_marginLeft="1.5dp"
              android:layout_marginRight="3dp"
              android:layout_height="match_parent">
-
          </LinearLayout>
      </LinearLayout>-->
 

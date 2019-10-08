@@ -112,7 +112,15 @@ public class WordStudyActivity extends AppCompatActivity {
                         break;
                     case 2 :
                         Glide.with(getApplicationContext()).load(R.drawable.nin).into(gif);
-                        next_btn.setVisibility(View.VISIBLE);
+                        next_btn.setVisibility(View.INVISIBLE);
+                        break;
+                    case 3 :
+                        Glide.with(getApplicationContext()).load(R.drawable.de).into(gif);
+                        next_btn.setVisibility(View.INVISIBLE);
+                        break;
+                    case 4 :
+                        Glide.with(getApplicationContext()).load(R.drawable.zuowei).into(gif);
+                        next_btn.setVisibility(View.INVISIBLE);
                         break;
                     default:
                         break;
@@ -132,7 +140,7 @@ public class WordStudyActivity extends AppCompatActivity {
 
     public static class MyPagerAdapter extends FragmentStatePagerAdapter {
 
-        private static int NUM_ITEMS = 3;
+        private static int NUM_ITEMS = 5;
 
         public MyPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
@@ -145,29 +153,41 @@ public class WordStudyActivity extends AppCompatActivity {
 
         // Returns the fragment to display for that page
         public Fragment getItem(int position) {
-            Bundle bundle = new Bundle(3); // 액티비티와 프래그먼트 간 데이터를 주고 받기 위함
-            WordFragment1 wf1 = new WordFragment1();
+            Bundle bundle = new Bundle(5); // 액티비티와 프래그먼트 간 데이터를 주고 받기 위함
+            WordFragment wf = new WordFragment();
 
             switch (position) {
                 case 0:
                     bundle.putString("word", "排");
                     bundle.putString("speak", "pái  ");
                     bundle.putString("mean", "열");
-                    wf1.setArguments(bundle);
-                    return wf1;
+                    wf.setArguments(bundle);
+                    return wf;
                 case 1:
 
                     bundle.putString("word", "座");
                     bundle.putString("speak", "zuò  ");
                     bundle.putString("mean", "좌석");
-                    wf1.setArguments(bundle);
-                    return wf1;
+                    wf.setArguments(bundle);
+                    return wf;
                 case 2:
                     bundle.putString("word", "您");
                     bundle.putString("speak", "nín  ");
                     bundle.putString("mean", "당신");
-                    wf1.setArguments(bundle);
-                    return wf1;
+                    wf.setArguments(bundle);
+                    return wf;
+                case 3 :
+                    bundle.putString("word", "的");
+                    bundle.putString("speak", "de");
+                    bundle.putString("mean", "~의");
+                    wf.setArguments(bundle);
+                    return wf;
+                case 4 :
+                    bundle.putString("word", "座位");
+                    bundle.putString("speak", "zuò‧wèi");
+                    bundle.putString("mean", "좌석");
+                    wf.setArguments(bundle);
+                    return wf;
                 default:
                     return null;
             }
